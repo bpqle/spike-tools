@@ -1,0 +1,10 @@
+docker: False
+filter:
+    freq_min: 300
+    freq_max: 6000
+sparsity:
+    method: 'radius'
+    radius_um: 80
+pca:
+    mode: 'by_channel_global'
+    n_components: 3

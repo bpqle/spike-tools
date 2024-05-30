@@ -1,0 +1,5 @@
+filter: False
+detect_threshold: 4.0
+npca_per_subdivision: 8
+detect_time_radius_msec: 1.5
+scheme2_training_duration_sec: 400
