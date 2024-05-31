@@ -1,0 +1,10 @@
+snr:
+    peak_sign: 'neg'
+isi_violation:
+    isi_threshold_ms: 1.5
+    min_isi_ms: 0
+rp_violation:
+    refractory_period_ms: 1.0
+    censored_period_ms: 0
+drift:
+    direction: 'y'
