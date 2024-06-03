@@ -30,11 +30,16 @@ try:
 except:
     raise ValueError("Recording Folder not found.")    
     
-with open(p.probe) as probe_file:
-    probe_config = yaml.safe_load(probe_file)
-if probe_config['mode'] == 'import':
+if p.probe.suffix == '.yml': # download saved probe
+    with open(p.probe) as probe_file:
+        probe_config = yaml.safe_load(probe_file)
     probe = get_probe(probe_config['manufacturer'], probe_config['model'])
     probe.wiring_to_device(probe_config['wiring'])
+elif p.probe.suffix == '.csv':
+    from .utils import create_probe
+    probe = create_probe(p.probe)
+else:
+    raise ValueError("Undefined probe config format file.")
 
 try:
     assert p.sorter.is_file()
