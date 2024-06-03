@@ -12,10 +12,10 @@ import warnings
 warnings.simplefilter('ignore')
 
 parser = argparse.ArgumentParser()
-parser.add_argument("-r", "recording_folder", help="OpenEphys Recording Folder", type=Path, required=True)
-parser.add_argument("-o", "output_folder", help="Folder to write sorting results to", type=Path, required=True)
-parser.add_argument("-p", "probe", help="Probe Config File", type=Path, required=True)
-parser.add_argument("-s", "sorter", help="Sorter Config File", type=Path, required=True)
+parser.add_argument("-r", "--recording_folder", help="OpenEphys Recording Folder", type=Path, required=True)
+parser.add_argument("-o", "--output_folder", help="Folder to write sorting results to", type=Path, required=True)
+parser.add_argument("-p", "--probe", help="Probe Config File", type=Path, required=True)
+parser.add_argument("-s", "--sorter", help="Sorter Config File", type=Path, required=True)
 p = parser.parse_args()
 
 abs_path = os.path.abspath(os.path.dirname(__file__))
@@ -57,7 +57,9 @@ elif sorter == "ironclus":
     si.IronClustSorter.set_ironclust_path(cfg['sorters'][sorter])
 elif sorter == "kilosort3":
     si.Kilosort3Sorter. set_kilosort3_path(cfg['sorters'][sorter])
-assert sorter in si.installed_sorters()
+elif sorter == "combinato":
+    si.CombinatoSorter. set_combinato_path(cfg['sorters'][sorter])
+assert sorter in si.installed_sorters(), f"{sorter} not registered as installed"
 
 base_output = p.output_folder
 base_output.mkdir(parents=True, exist_ok=True)

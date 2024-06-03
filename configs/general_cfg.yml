@@ -8,7 +8,7 @@ pca:
     mode: 'by_channel_global'
     n_components: 3
 sorters:
-    waveclus: './'
-    kilosort2_5: './'
-    combinato: './'
-    ironclus: './'
+    waveclus: './sorter/'
+    kilosort2_5: './sorter/'
+    combinato: './sorter/'
+    ironclus: './sorter/'
